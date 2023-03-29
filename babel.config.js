@@ -16,6 +16,8 @@ module.exports = {
           '@components': './app/components',
           '@screens': './app/screens',
           '@utils': './app/utils',
+          '@redux': './app/redux',
+          '@apis': './app/apis',
         },
       },
     ],
