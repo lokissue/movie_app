@@ -4,6 +4,7 @@
 ## Screenshots
 
 ![Movie App preview](https://github.com/lokissue/movie_app/blob/master/asset/preview.png?raw=true)
+> Design inspired by [here](https://www.pinterest.com.au/pin/573364596307099215/)
 
 ## Setup
 This is an example of how you may give instructions on setting up your project locally.
