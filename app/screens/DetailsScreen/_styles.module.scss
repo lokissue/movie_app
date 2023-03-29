@@ -1,0 +1,141 @@
+
+// token
+$title-fontsize: 32px;
+$info-fontsize: 14px;
+
+@mixin round-bottom-border {
+    border-bottom-left-radius: 16;
+    border-bottom-right-radius: 16;
+}
+
+.container {
+    background-color: #111;
+    // @include round-bottom-border;
+}
+
+.poster_container {
+    position: relative;
+}
+
+.poster {
+    width: 100%;
+    @include round-bottom-border;
+}
+
+.info_section {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, 0.5);
+    border-width: 1px;
+    @include round-bottom-border;
+}
+
+.title {
+    font-size: $title-fontsize;
+    font-weight: 800;
+    color: #fff;
+    position: absolute;
+    bottom: $title-fontsize + $info-fontsize * 2;
+    left: 16;
+}
+
+
+.sub_info {
+    position: absolute;
+    bottom: 20;
+    left: 16;
+}
+
+.info_text {
+    font-size: $info-fontsize;
+    font-weight: 500;
+    color: rgb(221, 221, 221);
+}
+
+.section {
+    margin-top: 24;
+    padding-left: 16;
+    padding-right: 16;
+
+    &_title {
+        font-size: 16;
+        font-weight: 500;
+        margin-bottom: 8;
+    }
+
+    &_sub_text {
+        font-size: 14;
+        color: #444;
+    }
+}
+
+.back_button {
+    position: absolute;
+    left: 20;
+    top: 58;
+
+    width: 32;
+    height: 32;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255);
+    border-radius: 40px;
+}
+
+.imdbRating {
+    position: absolute;
+    width: 48;
+    height: 48;
+    top: 50;
+    right: 20;
+    justify-content: center;
+    align-items: center;
+
+    border-color: rgba(255,255,255);
+    border-width: 1px;
+    border-radius: 48px;
+
+    &_inner {
+        width: 32;
+        height: 32;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255,255,255);
+        border-radius: 40px;
+    }
+
+    &_value {
+        color:rgba(0,0,0, 0.9);
+        font-size: 16;
+        font-weight: 800;
+    }
+}
+
+.rating {
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &_container {
+        width: 32%;
+        height: 40;
+        align-items: center;
+        margin-top: 4;
+    }
+
+    &_value {
+        color: #0284C7;
+        font-weight: 600;
+        font-size: 18;
+    }
+
+    &_source {
+        font-weight: 600;
+        font-size: 10;
+    }
+}

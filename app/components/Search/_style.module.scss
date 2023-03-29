@@ -1,0 +1,33 @@
+.container {
+    margin: 0 8px;
+    margin-bottom: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    width: 100%,
+}
+
+.searchBar_unfocused {
+    padding: 8px;
+    flex-direction: row;
+    width: 95%;
+    background-color: #d9dbda;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.searchBar_focused {
+    padding: 8px;
+    flex-direction: row;
+    width: 80%;
+    background-color: #d9dbda;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .input {
+    font-size: 16;
+    margin-left: 10px;
+    width: 80%;
+  }
