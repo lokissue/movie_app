@@ -30,14 +30,19 @@ _Below is an example of how you can instruct your audience on installing and set
    yarn install
    ```
 3. Make `.env` file
+   ```sh
+   API_URL=http://www.omdbapi.com/
+   API_KEY=
+   ```
 
-You can copy `.env.example` to make a `.env` file.
+   _You can copy `.env.example` to make a `.env` file._
 
-3. Enter your [omdbapi](http://www.omdbapi.com/) API key
+4. Enter your [omdbapi](http://www.omdbapi.com/) API key
    ```sh
    API_KEY=*Your API KEY*
    ```
 
+   Bonus: [React Native Debugger](https://github.com/jhen0409/react-native-debugger) could come in handy
 
 ## Available Scripts
 
