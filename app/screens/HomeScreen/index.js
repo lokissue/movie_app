@@ -21,6 +21,7 @@ import {
 import MovieCard from '@components/MovieCard';
 import SearchBar from '@components/Search';
 import NotFound from '@components/404';
+import {TextButton} from '@components/Button';
 import styles from './_styles.module.scss';
 
 const HomeScreen = ({navigation}) => {
@@ -113,14 +114,11 @@ const HomeScreen = ({navigation}) => {
   };
 
   const renderFooter = () => {
-    if (loading) {
-      return <ActivityIndicator />;
-    }
     if (hasError && !loading) {
       return (
         <View style={{flex: 1}}>
           <NotFound />
-          <Button
+          <TextButton
             title="Try again"
             onPress={() => searchMovie({s: lastSearch})}
           />
@@ -129,10 +127,13 @@ const HomeScreen = ({navigation}) => {
     }
     if (moviesArray?.length && total > moviesArray?.length) {
       return (
-        <Button
-          title="Load More"
-          onPress={() => searchMovie({s: lastSearch, page: page + 1})}
-        />
+        <View style={[styles.footer_container]}>
+          <TextButton
+            title="Load More"
+            onPress={() => searchMovie({s: lastSearch, page: page + 1})}
+            loading={loading}
+          />
+        </View>
       );
     }
     return null;

@@ -1,14 +1,8 @@
 import React, {useState, useRef} from 'react';
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  Keyboard,
-  Button,
-  Pressable,
-} from 'react-native';
+import {TextInput, View, Keyboard, Button, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import {TextButton} from '@components/Button';
 import styles from './_style.module.scss';
 
 const SearchBar = ({onSubmit}) => {
@@ -53,7 +47,7 @@ const SearchBar = ({onSubmit}) => {
       </View>
       {isFocus && (
         <View>
-          <Button
+          <TextButton
             title="Cancel"
             onPress={() => {
               Keyboard.dismiss();

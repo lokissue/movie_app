@@ -13,7 +13,7 @@ import NotFound from '@components/404';
 
 import {fetchMovie} from '@apis';
 import Image from '@components/Image';
-import {IconButton} from '@components/Button';
+import {IconButton, TextButton} from '@components/Button';
 
 import styles from './_styles.module.scss';
 import {addHistory} from '@redux/moviesSlice';
@@ -114,7 +114,7 @@ const DetailsScreen = ({route, navigation}) => {
       {hasError ? (
         <View style={{marginTop: 32}}>
           <NotFound />
-          <Button title={'Try again'} onPress={searchMovie} />
+          <TextButton title={'Try again'} onPress={searchMovie} />
         </View>
       ) : null}
       {data?.Plot ? (
