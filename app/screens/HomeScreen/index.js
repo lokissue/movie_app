@@ -18,7 +18,6 @@ import {
   initialize,
 } from '@redux/moviesSlice';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import MovieCard from '@components/MovieCard';
 import SearchBar from '@components/Search';
 import NotFound from '@components/404';
@@ -37,13 +36,14 @@ const HomeScreen = ({navigation, route}) => {
   const [hasError, setHasError] = useState(false);
 
   const searchMovie = async options => {
-    const {s} = options;
+    const {s, y} = options;
     if (s) {
-      if (s !== lastSearch) {
+      // check if new search
+      if (s !== lastSearch.s || y !== lastSearch.y) {
         dispatch(setPage(1));
         dispatch(setTotal(0));
       }
-      dispatch(setLastSearch(s));
+      dispatch(setLastSearch({s: options.s, y: options?.y || null}));
       options.s = s.replace(' ', '+');
     }
     if (!options?.page) {
@@ -79,6 +79,17 @@ const HomeScreen = ({navigation, route}) => {
     setHasError(true);
   };
 
+  const getSearchText = () => {
+    let text = '';
+    if (lastSearch.s) {
+      text += ': ' + lastSearch.s;
+      if (lastSearch.y) {
+        text += ` (${lastSearch.y})`;
+      }
+    }
+    return text;
+  };
+
   useEffect(() => {
     searchMovie({s: 'batman'});
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,8 +97,10 @@ const HomeScreen = ({navigation, route}) => {
 
   useEffect(() => {
     if (params?.year) {
-      searchMovie({s: lastSearch || 'batman', y: params.year});
+      searchMovie({s: lastSearch?.s || 'batman', y: params.year});
+      params.year = null;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   const formattedData = useMemo(() => {
@@ -117,15 +130,19 @@ const HomeScreen = ({navigation, route}) => {
     return (
       <View style={styles.header}>
         <View style={styles.header_title_section}>
-          <Text style={styles.header_text}>
-            Movies{loading ? <ActivityIndicator /> : null}
+          <Text style={styles.header_text} numberOfLines={1}>
+            {`Movies${getSearchText()}`}
           </Text>
           <Pressable
             style={styles.filter_button}
             onPress={() => {
               navigation.navigate('Filter');
             }}>
-            <Icon name="filter" size={18} color="#000" />
+            {loading ? (
+              <ActivityIndicator />
+            ) : (
+              <Icon name="filter" size={18} color="#000" />
+            )}
           </Pressable>
         </View>
         <SearchBar onSubmit={t => searchMovie({s: t})} />
@@ -141,7 +158,7 @@ const HomeScreen = ({navigation, route}) => {
           <View style={[styles.button_container]}>
             <TextButton
               title="Try again"
-              onPress={() => searchMovie({s: lastSearch})}
+              onPress={() => searchMovie({...lastSearch})}
             />
           </View>
         </View>
@@ -152,7 +169,7 @@ const HomeScreen = ({navigation, route}) => {
         <View style={[styles.button_container]}>
           <TextButton
             title="Load More"
-            onPress={() => searchMovie({s: lastSearch, page: page + 1})}
+            onPress={() => searchMovie({...lastSearch, page: page + 1})}
             loading={loading}
           />
         </View>

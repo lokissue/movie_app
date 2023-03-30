@@ -4,7 +4,7 @@ const initialState = {
   page: 1,
   total: 0,
   data: [],
-  lastSearch: '',
+  lastSearch: {},
   searchHistory: {},
 };
 

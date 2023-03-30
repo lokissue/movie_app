@@ -42,9 +42,6 @@ const DetailsScreen = ({route, navigation}) => {
       }
       if (params.imdbID) {
         const res = await fetchMovie({i: params.imdbID});
-        if (res.Poster === 'N/A') {
-          res.Poster = '';
-        }
         setData(res);
         dispatch(addHistory({[params.imdbID]: res}));
       } else {

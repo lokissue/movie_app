@@ -5,7 +5,7 @@ import Image from '@components/Image';
 import styles from './_style.module.scss';
 
 const MovieCard = ({data, onPress, style}) => {
-  const {Poster, Title, Type, Year, imdbID} = data;
+  const {Poster, Title, Year} = data;
 
   if (data.empty) {
     return <View style={styles.card}></View>;

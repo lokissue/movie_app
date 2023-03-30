@@ -8,7 +8,9 @@ export const fetchMovie = options => {
   let URL = `${Config.API_URL}/?apikey=${Config.API_KEY}`;
 
   if (options) {
-    Object.keys(options).forEach(key => (URL += `&${key}=${options[key]}`));
+    Object.keys(options).forEach(
+      key => (URL += options[key] ? `&${key}=${options[key]}` : ''),
+    );
   }
 
   console.log(URL);
