@@ -1,6 +1,10 @@
 import Config from 'react-native-config';
 
 export const fetchMovie = options => {
+  if (!Config.API_URL || !Config.API_KEY) {
+    throw new Error('API config error');
+  }
+
   let URL = `${Config.API_URL}/?apikey=${Config.API_KEY}`;
 
   if (options) {
