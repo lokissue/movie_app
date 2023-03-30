@@ -3,17 +3,17 @@ import {
   View,
   Text,
   ScrollView,
-  Pressable,
   Image as RNImage,
   StyleSheet,
   Button,
+  Platform,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
 import NotFound from '@components/404';
 
 import {fetchMovie} from '@apis';
 import Image from '@components/Image';
+import {IconButton} from '@components/Button';
 
 import styles from './_styles.module.scss';
 import {addHistory} from '@redux/moviesSlice';
@@ -71,7 +71,12 @@ const DetailsScreen = ({route, navigation}) => {
   }, [data]);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
+      <IconButton
+        style={[styles.back_button, RNstyles.back_button]}
+        iconName={'chevron-back'}
+        onPress={() => navigation.goBack()}
+      />
       <View style={[styles.poster_container, RNstyles.posterShadow]}>
         <Image
           src={data?.Poster || params?.Poster}
@@ -80,11 +85,6 @@ const DetailsScreen = ({route, navigation}) => {
           alt={data.Title}
         />
         <View style={[styles.info_section]}>
-          <Pressable
-            style={styles.back_button}
-            onPress={() => navigation.goBack()}>
-            <Icon name={'chevron-back'} size={24} color={'#000'} />
-          </Pressable>
           {data?.imdbRating ? (
             <View style={styles.imdbRating}>
               <View style={styles.imdbRating_inner}>
@@ -153,6 +153,10 @@ const RNstyles = StyleSheet.create({
     shadowOpacity: 0.75,
     shadowRadius: 10,
     elevation: 5,
+  },
+  back_button: {
+    zIndex: 100,
+    elevation: Platform.OS === 'android' ? 100 : 0,
   },
 });
 

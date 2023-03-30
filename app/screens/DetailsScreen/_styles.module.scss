@@ -9,8 +9,7 @@ $info-fontsize: 14px;
 }
 
 .container {
-    background-color: #111;
-    // @include round-bottom-border;
+    position: relative;
 }
 
 .poster_container {
@@ -30,7 +29,7 @@ $info-fontsize: 14px;
     right: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0,0,0, 0.42);
     border-width: 1px;
     @include round-bottom-border;
 }
@@ -79,12 +78,7 @@ $info-fontsize: 14px;
     left: 20;
     top: 58;
 
-    width: 32;
-    height: 32;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255,255,255);
-    border-radius: 40px;
+    background-color: rgba(255,255,255, 0.95);
 }
 
 .imdbRating {
