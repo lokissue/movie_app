@@ -1,33 +1,41 @@
 .container {
-    margin: 0 8px;
-    margin-bottom: 8px;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     width: 100%,
 }
 
+@mixin searchBar {
+  padding: 8px;
+  flex-direction: row;
+  border-radius: 20px;
+  align-items: center;
+
+}
+
 .searchBar_unfocused {
-    padding: 8px;
-    flex-direction: row;
-    width: 95%;
+    @include searchBar;
+    width: 100%;
     background-color: #d9dbda;
-    border-radius: 20px;
-    align-items: center;
 }
 
 .searchBar_focused {
-    padding: 8px;
-    flex-direction: row;
+    @include searchBar;
     width: 80%;
-    background-color: #d9dbda;
-    border-radius: 20px;
-    align-items: center;
+    background-color: #e2e1e7;
     justify-content: space-evenly;
+  }
+
+  .search_icon {
+    margin-left: 4;
+  }
+
+  .clear_text_icon {
+    margin-right: 1;
   }
 
   .input {
     font-size: 16;
-    margin-left: 10px;
-    width: 80%;
+    margin-left: 4px;
+    flex: 1;
   }
