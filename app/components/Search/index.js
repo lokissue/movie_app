@@ -26,12 +26,7 @@ const SearchBar = ({onSubmit}) => {
     <View style={styles.container}>
       <View
         style={isFocus ? styles.searchBar_focused : styles.searchBar_unfocused}>
-        <Icon
-          name="search"
-          size={20}
-          color="black"
-          style={styles.search_icon}
-        />
+        <Icon name="search" size={20} color="#000" style={styles.search_icon} />
         <TextInput
           ref={inputRef}
           style={styles.input}
@@ -52,7 +47,7 @@ const SearchBar = ({onSubmit}) => {
               focusInput();
             }}
             style={styles.clear_text_icon}>
-            <Icon name="close" size={20} color="black" />
+            <Icon name="close" size={20} color="#000" />
           </Pressable>
         ) : null}
       </View>

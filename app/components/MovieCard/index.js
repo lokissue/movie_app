@@ -4,7 +4,7 @@ import Image from '@components/Image';
 
 import styles from './_style.module.scss';
 
-const MovieCard = ({data, onPress}) => {
+const MovieCard = ({data, onPress, style}) => {
   const {Poster, Title, Type, Year, imdbID} = data;
 
   if (data.empty) {
@@ -13,7 +13,7 @@ const MovieCard = ({data, onPress}) => {
 
   return (
     <>
-      <Pressable style={styles.card} onPress={onPress}>
+      <Pressable style={[styles.card, style]} onPress={onPress}>
         <Image src={Poster} resizeMode={'cover'} style={styles.cover} />
         <View style={styles.info}>
           <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">

@@ -61,7 +61,6 @@ const HomeScreen = ({navigation}) => {
       if (res.Response === 'False') {
         throw new Error(res?.Error || 'Not Found');
       }
-      // TO DO: Handle NOT FOUND
     } catch (error) {
       handleError();
     } finally {
@@ -141,13 +140,13 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {renderHeader()}
       <FlatList
         style={styles.list}
         data={formattedData}
         renderItem={renderItem}
         keyExtractor={(item, index) => item?.imdbID || index}
         numColumns={2}
-        ListHeaderComponent={renderHeader}
         ListFooterComponent={renderFooter}
       />
     </SafeAreaView>
