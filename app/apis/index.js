@@ -13,7 +13,6 @@ export const fetchMovie = options => {
     );
   }
 
-  console.log(URL);
   return new Promise(function (resolve, reject) {
     fetch(URL)
       .then(response => response.json())
