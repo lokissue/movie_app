@@ -44,6 +44,9 @@ const HomeScreen = ({navigation}) => {
       dispatch(setLastSearch(s));
       options.s = s.replace(' ', '+');
     }
+    if (!options?.page) {
+      dispatch(setPage(1));
+    }
     setHasError(false);
     try {
       setLoading(true);
@@ -105,9 +108,11 @@ const HomeScreen = ({navigation}) => {
   const renderHeader = () => {
     return (
       <View style={styles.header}>
-        <Text style={styles.header_text}>
-          Movies{loading ? <ActivityIndicator /> : null}
-        </Text>
+        <View>
+          <Text style={styles.header_text}>
+            Movies{loading ? <ActivityIndicator /> : null}
+          </Text>
+        </View>
         <SearchBar onSubmit={t => searchMovie({s: t})} />
       </View>
     );
