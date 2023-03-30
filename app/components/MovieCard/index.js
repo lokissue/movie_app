@@ -14,7 +14,11 @@ const MovieCard = ({data, onPress, style}) => {
   return (
     <>
       <Pressable style={[styles.card, style]} onPress={onPress}>
-        <Image src={Poster} resizeMode={'cover'} style={styles.cover} />
+        <Image
+          source={{uri: Poster}}
+          resizeMode={'cover'}
+          style={styles.cover}
+        />
         <View style={styles.info}>
           <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
             {Title}

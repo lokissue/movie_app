@@ -58,7 +58,7 @@ const DetailsScreen = ({route, navigation}) => {
   }, [params]);
 
   useEffect(() => {
-    if (data?.Poster) {
+    if (data?.Poster && data.Poster !== 'N/A') {
       RNImage.getSize(data?.Poster, (width, height) => {
         setImgRatio(width / height);
       });
@@ -74,7 +74,7 @@ const DetailsScreen = ({route, navigation}) => {
       />
       <View style={[styles.poster_container, RNstyles.posterShadow]}>
         <Image
-          src={data?.Poster || params?.Poster}
+          source={{uri: data?.Poster || params?.Poster}}
           style={[styles.poster, {aspectRatio: imgRatio}]}
           resizeMode="contain"
           alt={data.Title}
@@ -95,7 +95,7 @@ const DetailsScreen = ({route, navigation}) => {
               style={styles.info_text}
               numberOfLines={1}
               ellipsizeMode="tail">
-              {`${data.Runtime || ''} ${data.Year ? '| ' + data.Year : ''}`}
+              {`${data.Runtime || 'N/A'} ${data.Year ? '| ' + data.Year : ''}`}
             </Text>
             <Text
               style={styles.info_text}
