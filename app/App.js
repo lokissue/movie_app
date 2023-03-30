@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import {store} from '@redux/store';
 import HomeScreen from '@screens/HomeScreen';
 import DetailsScreen from '@screens/DetailsScreen';
+import FilterListScreen from '@screens/FilterListScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +16,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name="Movies"
+            name="Home"
             component={HomeScreen}
             options={({route}) => ({
               headerShown: false,
@@ -26,6 +27,13 @@ export default function App() {
             component={DetailsScreen}
             options={({route}) => ({
               title: route?.params?.Title || 'Details',
+              headerShown: false,
+            })}
+          />
+          <Stack.Screen
+            name="Filter"
+            component={FilterListScreen}
+            options={() => ({
               headerShown: false,
             })}
           />

@@ -10,6 +10,8 @@ export const fetchMovie = options => {
   if (options) {
     Object.keys(options).forEach(key => (URL += `&${key}=${options[key]}`));
   }
+
+  console.log(URL);
   return new Promise(function (resolve, reject) {
     fetch(URL)
       .then(response => response.json())

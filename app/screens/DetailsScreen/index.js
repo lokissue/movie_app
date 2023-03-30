@@ -5,18 +5,16 @@ import {
   ScrollView,
   Image as RNImage,
   StyleSheet,
-  Button,
   Platform,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import NotFound from '@components/404';
 
 import {fetchMovie} from '@apis';
-import Image from '@components/Image';
 import {IconButton, TextButton} from '@components/Button';
-
-import styles from './_styles.module.scss';
+import Image from '@components/Image';
+import NotFound from '@components/404';
 import {addHistory} from '@redux/moviesSlice';
+import styles from './_styles.module.scss';
 
 const DetailsScreen = ({route, navigation}) => {
   const params = route.params;
@@ -114,7 +112,9 @@ const DetailsScreen = ({route, navigation}) => {
       {hasError ? (
         <View style={{marginTop: 32}}>
           <NotFound />
-          <TextButton title={'Try again'} onPress={searchMovie} />
+          <View style={[styles.button_container]}>
+            <TextButton title={'Try again'} onPress={searchMovie} />
+          </View>
         </View>
       ) : null}
       {data?.Plot ? (

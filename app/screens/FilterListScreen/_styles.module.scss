@@ -1,0 +1,36 @@
+.container {
+    flex: 1;
+}
+
+.header {
+    flex-direction: row;
+    padding: 0px 8px;
+    align-items: baseline;
+}
+
+.header_text {
+    font-size: 24;
+    font-weight: 600;
+    margin-left: 8;
+}
+
+.list {
+    width: 100%;
+    padding: 0 4px;
+    
+}
+
+.list_item {
+    padding: 4px;
+    padding-top: 8px;
+
+    &_text {
+        font-size: 16;
+        font-weight: 500;
+        margin-left: 40;
+    }
+    &_separator {
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.1);
+    }
+}
